@@ -1,26 +1,30 @@
-import Hapi from '@hapi/hapi'
-import { defineRoutes } from './routes'
+/**
+ *
+ */
 
-const getServer = () => {
-    const server = Hapi.server({
-        host: 'localhost',
-        port: 3000,
-    })
+import Hapi from '@hapi/hapi';
+import { defineRoutes } from './routes';
+import { initDb } from './db/db';
 
-    defineRoutes(server)
-
-    return server
-}
+const buildServer = async () => {
+	await initDb();
+	const server = Hapi.server({
+		host: 'localhost',
+		port: 3000,
+	});
+	defineRoutes(server);
+	return server;
+};
 
 export const initializeServer = async () => {
-    const server = getServer()
-    await server.initialize()
-    return server
-}
+	const server = await buildServer();
+	await server.initialize(); // for server.inject() in tests
+	return server;
+};
 
 export const startServer = async () => {
-    const server = getServer()
-    await server.start()
-    console.log(`Server running on ${server.info.uri}`)
-    return server
+	const server = await buildServer();
+	await server.start();
+	console.log(`Server running on ${server.info.uri}`);
+	return server;
 };

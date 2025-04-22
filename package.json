@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@hapi/hapi": "^21.3.10",
+    "better-sqlite3": "^11.9.1",
     "joi": "^17.13.3",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
