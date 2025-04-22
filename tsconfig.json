@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"strict": true,
+
+		// Ahora compilamos TODO el proyecto desde la raíz
+		"rootDir": ".",
+		"outDir": "dist"
+	},
+
+	"include": [
+		"src/**/*.ts",
+		"scripts/**/*.ts" // <— incluimos tu init-db.ts aquí
+	],
+
+	"exclude": ["node_modules", "dist"]
+}

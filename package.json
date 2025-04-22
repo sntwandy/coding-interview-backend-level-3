@@ -1,26 +1,31 @@
 {
-  "name": "coding-interview-backend-level-3",
-  "version": "1.0.0",
-  "description": "Coding Interview Backend Level 3",
-  "main": "src/index.ts",
-  "scripts": {
-    "test": "jest e2e"
-  },
-  "author": "El Dorado Dev Team",
-  "license": "ISC",
-  "devDependencies": {
-    "@swc/core": "^1.7.2",
-    "@swc/jest": "^0.2.36",
-    "@types/jest": "^29.5.12",
-    "jest": "^29.7.0",
-    "mocha": "^10.7.0",
-    "typescript": "^5.5.4"
-  },
-  "dependencies": {
-    "@hapi/hapi": "^21.3.10",
-    "better-sqlite3": "^11.9.1",
-    "joi": "^17.13.3",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
-  }
+	"name": "coding-interview-backend-level-3",
+	"version": "1.0.0",
+	"description": "Coding Interview Backend Level 3",
+	"main": "src/index.ts",
+	"scripts": {
+		"test": "jest e2e",
+		"db:init": "npm run build && node dist/scripts/init-db.js",
+		"build": "tsc",
+		"start": "npm run build && node dist/src/index.js"
+	},
+	"author": "El Dorado Dev Team",
+	"license": "ISC",
+	"devDependencies": {
+		"@swc/cli": "^0.7.3",
+		"@swc/core": "^1.11.21",
+		"@swc/jest": "^0.2.36",
+		"@types/jest": "^29.5.12",
+		"@types/node": "^22.14.1",
+		"jest": "^29.7.0",
+		"mocha": "^10.7.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"@hapi/hapi": "^21.3.10",
+		"joi": "^17.13.3",
+		"sqlite": "^5.1.1",
+		"sqlite3": "^5.1.7"
+	}
 }
