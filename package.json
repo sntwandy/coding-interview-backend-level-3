@@ -17,6 +17,9 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@hapi/hapi": "^21.3.10"
+    "@hapi/hapi": "^21.3.10",
+    "joi": "^17.13.3",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   }
 }
