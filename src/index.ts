@@ -1,8 +1,13 @@
-import { initializeServer, startServer } from "./server"
+/**
+ *
+ */
 
-process.on('unhandledRejection', (err) => {
-    console.error(err)
-    process.exit(1)
-})
+import { initDb } from './db/db';
+import { initializeServer, startServer } from './server';
 
-await startServer()
+async function main() {
+	await initDb();
+	await startServer();
+}
+
+main();
