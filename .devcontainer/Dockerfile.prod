@@ -1,27 +1,22 @@
-# ---------- Stage 1: Build ----------
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# 1) Copia dependencias y compila
 COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
 RUN npm run build
 
-# ---------- Stage 2: Runtime ----------
 FROM node:20-alpine
 WORKDIR /app
 
-# 2) Instala solo prod deps
+
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-# 3) Copia artefactos de build y carpeta de datos vacía
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/data ./data
 
 EXPOSE 3000
 
-# 4) Comando de arranque
 CMD ["node", "dist/src/index.js"]
